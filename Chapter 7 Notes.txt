@@ -1,0 +1,14 @@
+Chapter 7 Notes
+Process Termination:Eight ways to terminate the processReturn from main,
+Calling exit,
+calling _exit or _Exit,
+Return of the last thread from it’s start routine,
+calling pthread_exit from the last thread,
+calling abort,
+receipt of a signal,
+response of the last thread to a cancellation request
+
+_exit or _Exit which return to the kernel immediately, and exit, which performs certain cleanup
+processing and then returns to the kernel.
+
+

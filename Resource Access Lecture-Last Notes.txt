@@ -1,0 +1,28 @@
+Resource Limitations:
+per-process or per-user limits
+system-wide hard-coded limits
+system tunable configuration options
+Limitations of the traditional Unix access semantics such as:
+a file can only have one group owner,
+group membership quickly becomes convoluted
+different (file- and operating-) systems have different limits on the number of groups a user can
+be a member of
+any modification of group membership requires the sysadmin t o make changes (add/remove
+members, create new groups, ...)
+Question:- Can I apply chroot on the current directory
+We can also change euids, restrict euids, restrict shells
+Our eUID controls access to resources. But we can restrict certain access further via e.g. “file
+flags”
+We can even prevent eUID from making changes
+A way of restricting what a user can do is to only allow them to execute specific commands, for
+example via a restricted shell
+prohibit cd, prohibit changing e.g., PATH etc,prohibit use of commands containing a ’ /’ (i.e.,
+only commands found in the (fixed) PATH can be executed), redirecting output into files
+Chroot makes scope specific and stops your access beyond the chroot directory.
+Answer:- Yes, you can but then you will need all the essential linking libraries, and compiled
+libraries in that directory, for that particular process.
+Jails:
+Jails effectively implement a process sandbox environment, forming the first OS-level
+virtualization.
+
+

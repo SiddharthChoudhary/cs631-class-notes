@@ -1,0 +1,31 @@
+●
+
+System calls are divided into two categories generally- Slow, and all the remaining ones.
+
+●
+●
+
+Slow ones can actually block forever the system.
+Slow ones like reads, writes, opens, reads and writes which require record locking.
+Though because of all these blocking there is a way to launch these operations in a
+non-blocking manner. That’s where NonBlocking I/O comes handy.
+
+●
+
+Question:- How would polling causes more wastage and this could be reduced by using
+Nonblocking descriptor, because in the nonblocking decriptor will also have to take care
+of few stuff right?
+Question:- Locking a section or a region in a file, How is that possible?
+
+●
+●
+
+Two types of lock:a shared read lock (l_type of F_RDLCK) and an exclusive write lock
+(F_WRLCK).
+
+●
+
+The basic rule is that any number of processes can have a shared read lock on a given
+byte, but only one process can have an exclusive write lock on a given byte.
+
+

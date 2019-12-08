@@ -1,0 +1,20 @@
+There are basically three types of IPCs:
+1. Semaphores
+2. Shared-Memory
+3. Message Queues
+Note:- All of these are limited to process communication and are refferred to by an identifier and
+a key
+Message Queues:The good thing to note is:- message queues are identified by a named identifier and also that
+the message queues may or may not be exposed in the file system
+Then comes the PIPES:Pipes can be half duplex or full duplex
+Pipes could be used further for process communication by communicating between parent and
+child.
+Mkfifo is used as a command line tool
+
+Questions:
+Can semaphores be mixed with shared memories?
+
+Answers:- Turns out that yes they can be. Shared memory basically is built on top of
+semaphores only.
+
+

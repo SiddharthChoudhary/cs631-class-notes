@@ -1,0 +1,31 @@
+Logging:You can either use either kernel log(9) or syslog(3) or UDP messages to port514
+openlog(3) allows us to set specific options when logging
+syslog(3) writes a message to the system message logger, tagged with priority
+Talking about Nonblocking I/O, it lets us issue an I/O operation and not have it block forever. If
+the operation cannot be completed, return is made immediately with an error noting that the
+operating would have blocked.
+Resource Locking:- If someone else is using the resource or you do not want a resource to be
+shared then you can have that resource locked. You can create a semaphore with that.
+But there could be one issue with that is that it could end up into a deadlock
+Advisory Locking:- applies or removes an advisory lock on the file associated with the file
+descriptor fd
+Record locking is done using fcntl(2), using one of F GETLK, F SETLK or F SETLKW and
+passing a structure of flock
+Also look at the function:- lockf()
+Note: Locks arenot inherited across fork(2)
+inherited across exec(2)
+released upon exec(2) if close-on-exec is set
+released if a process terminates
+released if a filedescriptor is closed
+Also, Locks are associated with a file and process pair, not with a filedescriptor
+Question:- Can I encrypt a lock?
+Cryptography:- As you already know about cryptography. It’s quite the same, such as public and
+private sharing key encryption.
+
+Ciphers:- two types:- Stream Cipher and Block Cipher
+Random numbers can be generated using /dev/random, /dev/urandom, rand(3), random(3), BN
+rand(3)
+Answer to the previous question:- You cannot because lock is associated with file and process,
+and encrypting is totally something different
+
+
