@@ -1,0 +1,38 @@
+1.) Is daemoning a process is equivalent to running a process in the background and if it is, then would forking a process and exiting the parent cause a daemon (basically having an orphaned child process)
+
+Things to look at:- 
+	daemon coding rules
+
+1. call ~umask~ to set the file mode creation mask to known value, usually 0.
+2. call ~fork~ and have the parent exit
+3. call ~setsid~ to create a new session. this makes the child process
+   1) become the leader of a new session,
+   2) become the leader of new process group, and
+   3) disassociates it from controlling terminal.
+   4) change cwd to root directory
+   5) unneeded fd's should be closed
+   6) some daemons open fds 0, 1, 2 to /dev/null so that library routines that try to read from stdin/write to stdout/stderr will have no effect.
+
+
+What actually a daemon is?
+A daemon (pronounced DEE-muhn) is a program that runs continuously and exists for the purpose of handling periodic service requests that a computer system expects to receive. The daemon program forwards the requests to other programs (or processes) as appropriate. Each server of pages on the Web has an HTTPD or Hypertext Transfer Protocol daemon that continually waits for requests to come in from Web clients and their users.
+
+Let's write the following for bozoHttpd,Minihttps,mathopod,null_httpd,muhttpd
+For BOZOHTTPD:-
+program startup and daemonization
+network logic (socket(2), bind(2), ...)
+request handling (pre-forking? select(2)? threads?- using pre-forking in daemon
+input / request parsing and validation (how robust is this logic?)
+does this server support CGIs?- Yes this server support CGI's since that's what written on it's manual page
+does this server support ~-user directories? No, it redirects them
+does this server support index generation?
+how does it handle regular file serving?
+what kind of coding style does the project use?
+would the code pass our standards? Definitely yes, it's way better than mine atleast
+
+For Minihttps:-
+
+It uses select,It uses pre-forking, but if daemon is present then it won't fork.
+
+
+
